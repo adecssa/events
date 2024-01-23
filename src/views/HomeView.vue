@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+   <p>Hello Word !!!</p>
+
+   <RouterLink to="about">About</RouterLink>
 </template>
