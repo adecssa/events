@@ -1,1 +1,0 @@
-import{c as a,a as t,w as s,u as o,F as r,b as e,o as c,d as n,R as u}from"./index-habthEo5.js";const _=e("div",{class:"about"},[e("h1",null,"This is an about page")],-1),p={__name:"AboutView",setup(l){return(i,d)=>(c(),a(r,null,[_,t(o(u),{to:"/"},{default:s(()=>[n("home")]),_:1})],64))}};export{p as default};
