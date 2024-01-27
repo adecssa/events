@@ -1,18 +1,35 @@
 <script setup>
-import { app, credentials } from '@/lib/database'
+import { createRegistration, listRegistrations } from '@/lib/database'
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const registers = ref([])
 
-async function listRegistrations() {
-  const user = await app.logIn(credentials)
+async function registrations() {
+  registers.value = await listRegistrations()
+}
 
-  registers.value = await user.functions.list_registrations()
+async function createInscription() {
+  const obj = {
+    name: 'Dyuelber Rodrigues Miranda',
+    church: 'Assembléia de Deus',
+    childrenMinistry: false,
+    phone: '33999999999',
+    address: {
+      zip: '35334000',
+      street: 'Rua Equador',
+      number: '124',
+      zone: 'Caladinho',
+      city: 'Coronel Fabriciano',
+      complement: 'AP 102'
+    }
+  }
+
+  registers.value = await createRegistration(obj)
 }
 
 onMounted(() => {
-  listRegistrations()
+  registrations()
 })
 </script>
 
@@ -26,6 +43,14 @@ onMounted(() => {
       {{ register.name }}
     </li>
   </ul>
+
+  <br />
+
+  <button type="button" class="btn btn-sm btn-primary" @click="createInscription()">
+    Criar Inscrição
+  </button>
+
+  <br />
 
   <RouterLink to="/">home</RouterLink>
 </template>
