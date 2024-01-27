@@ -127,7 +127,16 @@
       </div>
     </div>
 
-    <div class="col-12 mt-5">
+    <div class="col-md-12 mt-4">
+      <div class="alert alert-light" role="alert">
+        <small
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni reiciendis aperiam commodi
+          consequatur amet ea doloremque.</small
+        >
+      </div>
+    </div>
+
+    <div class="col-12">
       <div class="d-grid">
         <button
           type="button"
@@ -135,7 +144,7 @@
           :disabled="disabled"
           @click="createRegisterInscription()"
         >
-          SALVAR DADOS
+          SALVAR
         </button>
       </div>
     </div>
@@ -163,7 +172,7 @@ const inscriptionForm = ref({
 })
 
 const addresForm = ref({
-  zip: '35334000',
+  zip: '35170002',
   street: 'Rua Equador',
   number: '124',
   zone: 'Caladinho',
@@ -181,12 +190,14 @@ async function loading() {
   })
 }
 
-async function success() {
+async function success(name) {
+  name = name.split(' ')[0]
+
   Swal.fire({
     icon: 'success',
     title: 'Informações salvas!',
-    text: 'Para realizar confirmação da inscrição, realize o pagamento, clicando no botão abaixo',
-    confirmButtonText: 'Realizar Pagamento'
+    html: `<strong>${name}</strong>, para confirmar a inscrição, realize o pagamento da taxa, clicando no botão abaixo`,
+    confirmButtonText: 'Pagar Taxa'
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = 'https://www.google.com/'
@@ -197,30 +208,41 @@ async function success() {
 async function error() {
   Swal.fire({
     icon: 'warning',
-    text: 'Não foi possível realizar a inscrição no momento, tente novamente mais tarde!'
+    text: 'Não foi possível salvar seus dados no momento, tente novamente mais tarde!'
   })
 }
 
 async function createRegisterInscription() {
+  if (!validateFields()) return
+
   this.disabled = true
 
   const obj = {
     ...this.inscriptionForm,
     address: this.addresForm
   }
-  console.log('createRegisterInscription ~ obj:', obj)
-
-  return success()
 
   loading()
 
   const result = await createRegistration(obj)
-  if (!result?._insertedId) {
+  if (result?.insertedId) {
     console.log(result)
-    return success()
+    this.disabled = false
+    return success(this.inscriptionForm.name)
   }
 
   error()
+}
+
+async function validateFields() {
+  if (
+    this.inscriptionForm.name.length === 0 ||
+    this.inscriptionForm.phone.length === 0 ||
+    this.zipSearch.length === 0
+  )
+    return false
+
+  return true
 }
 
 async function getCityByZip(zipCode) {

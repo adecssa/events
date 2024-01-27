@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -46,7 +46,10 @@ const router = createRouter({
         title: 'Inscrição'
       }
     }
-  ]
+  ],
+  scrollBehavior() {
+    window.scrollTo(0, 0)
+  }
 })
 
 router.beforeEach((to, from, next) => {
