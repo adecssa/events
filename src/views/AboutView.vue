@@ -1,35 +1,34 @@
 <script setup>
-import { createRegistration, listRegistrations } from '@/lib/database'
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const registers = ref([])
 
-async function registrations() {
-  registers.value = await listRegistrations()
-}
+// async function registrations() {
+//   registers.value = await listRegistrations()
+// }
 
-async function createInscription() {
-  const obj = {
-    name: 'Dyuelber Rodrigues Miranda',
-    church: 'Assembléia de Deus',
-    childrenMinistry: false,
-    phone: '33999999999',
-    address: {
-      zip: '35334000',
-      street: 'Rua Equador',
-      number: '124',
-      zone: 'Caladinho',
-      city: 'Coronel Fabriciano',
-      complement: 'AP 102'
-    }
-  }
+// async function createInscription() {
+//   const obj = {
+//     name: 'Dyuelber Rodrigues Miranda',
+//     church: 'Assembléia de Deus',
+//     childrenMinistry: false,
+//     phone: '33999999999',
+//     address: {
+//       zip: '35334000',
+//       street: 'Rua Equador',
+//       number: '124',
+//       zone: 'Caladinho',
+//       city: 'Coronel Fabriciano',
+//       complement: 'AP 102'
+//     }
+//   }
 
-  registers.value = await createRegistration(obj)
-}
+//   registers.value = await createRegistration(obj)
+// }
 
 onMounted(() => {
-  registrations()
+  //registrations()
 })
 </script>
 
@@ -46,9 +45,9 @@ onMounted(() => {
 
   <br />
 
-  <button type="button" class="btn btn-sm btn-primary" @click="createInscription()">
+  <!-- <button type="button" class="btn btn-sm btn-primary" @click="createInscription()">
     Criar Inscrição
-  </button>
+  </button> -->
 
   <br />
 

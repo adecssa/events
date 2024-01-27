@@ -27,8 +27,6 @@ export const listRegistrations = async () => {
 }
 
 export const createRegistration = async (data) => {
-  console.log('createRegistration ~ data:', data)
-
   const user = await getUser()
   if (!user?.isLoggedIn) return
 

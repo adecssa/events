@@ -141,7 +141,6 @@
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          :disabled="disabled"
           @click="createRegisterInscription()"
         >
           SALVAR
@@ -161,7 +160,6 @@ import { RouterLink } from 'vue-router'
 import { createRegistration } from '@/lib/database'
 import Swal from 'sweetalert2'
 
-const disabled = ref(false)
 const zipSearch = ref('')
 
 const inscriptionForm = ref({
@@ -213,37 +211,33 @@ async function error() {
 }
 
 async function createRegisterInscription() {
-  if (!validateFields()) return
-
-  this.disabled = true
+  //if (!validateFields()) return
 
   const obj = {
-    ...this.inscriptionForm,
-    address: this.addresForm
+    ...inscriptionForm.value,
+    address: addresForm.value
   }
 
   loading()
 
   const result = await createRegistration(obj)
   if (result?.insertedId) {
-    console.log(result)
-    this.disabled = false
-    return success(this.inscriptionForm.name)
+    return success(inscriptionForm.value.name)
   }
 
   error()
 }
 
-async function validateFields() {
-  if (
-    this.inscriptionForm.name.length === 0 ||
-    this.inscriptionForm.phone.length === 0 ||
-    this.zipSearch.length === 0
-  )
-    return false
+// async function validateFields() {
+//   if (
+//     inscriptionForm.value.name.length === 0 ||
+//     inscriptionForm.value.phone.length === 0 ||
+//     zipSearch.value.length === 0
+//   )
+//     return false
 
-  return true
-}
+//   return true
+// }
 
 async function getCityByZip(zipCode) {
   const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${zipCode}`)
