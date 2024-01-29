@@ -219,16 +219,25 @@ async function success(name) {
   })
 }
 
-async function error() {
+async function error(msg) {
+  msg  = msg ? msg : 'Não foi possível salvar seus dados no momento, tente novamente mais tarde!';
+
   Swal.fire({
     icon: 'warning',
-    text: 'Não foi possível salvar seus dados no momento, tente novamente mais tarde!'
+    text: msg
   })
 }
 
 async function createRegisterInscription() {
-  //if (!validateFields()) return
+  
+  validateFields().then((result) => {
+    if (result === false) return error('Prencha todos os campos com as suas informações')
 
+    save()
+  })  
+}
+
+async function save() {
   const obj = {
     ...inscriptionForm.value,
     address: addresForm.value
@@ -244,16 +253,16 @@ async function createRegisterInscription() {
   error()
 }
 
-// async function validateFields() {
-//   if (
-//     inscriptionForm.value.name.length === 0 ||
-//     inscriptionForm.value.phone.length === 0 ||
-//     zipSearch.value.length === 0
-//   )
-//     return false
+async function validateFields() {
+  if (
+    inscriptionForm.value.name.length === 0 ||
+    inscriptionForm.value.phone.length === 0 ||
+    zipSearch.value.length === 0
+  )
+    return false
 
-//   return true
-// }
+  return true
+}
 
 async function getCityByZip(zipCode) {
   const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${zipCode}`)
