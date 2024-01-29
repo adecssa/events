@@ -1,5 +1,11 @@
 # events
 
+[Events](https://adecssa.github.io/events/#/)
+
+[Children](https://adecssa.github.io/events/#/children)
+
+[Inscription](https://adecssa.github.io/events/#/inscription)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
