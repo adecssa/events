@@ -1,7 +1,8 @@
 <template>
-  <HeroComponent title="Capacitar" description="Promovendo uma melhor capacitação" />
+  <HeroComponent title="Iusto praesentium" description="Deserunt odit quisquam ipsa, corporis laboriosam" />
 
   <ContentComponent />
+  
 </template>
 
 <script setup>

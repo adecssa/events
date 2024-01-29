@@ -1,7 +1,7 @@
 <template>
   <HeroComponent
-    title="Capacitar Kids"
-    description="Promovendo uma melhor capacitação"
+    title="Iusto praesentium"
+    description="Deserunt odit quisquam ipsa, corporis laboriosam"
     :cta-button="false"
   />
 
@@ -107,7 +107,7 @@
         type="text"
         class="form-control"
         id="inputPhone"
-        placeholder="Ex: 33 9 9985 4951"
+        placeholder="Ex: 33 9 9999 9999"
         v-model="inscriptionForm.phone"
       />
     </div>
@@ -162,20 +162,36 @@ import Swal from 'sweetalert2'
 
 const zipSearch = ref('')
 
+// const inscriptionForm = ref({
+//   name: 'Dyuelber Rodrigues Miranda',
+//   church: 'Assembléia de Deus',
+//   childrenMinistry: false,
+//   phone: '33999999999'
+// })
+
+// const addresForm = ref({
+//   zip: '35170002',
+//   street: 'Rua Equador',
+//   number: '124',
+//   zone: 'Caladinho',
+//   city: 'Coronel Fabriciano',
+//   complement: 'AP 102'
+// })
+
 const inscriptionForm = ref({
-  name: 'Dyuelber Rodrigues Miranda',
-  church: 'Assembléia de Deus',
+  name: '',
+  church: '',
   childrenMinistry: false,
-  phone: '33999999999'
+  phone: ''
 })
 
 const addresForm = ref({
-  zip: '35170002',
-  street: 'Rua Equador',
-  number: '124',
-  zone: 'Caladinho',
-  city: 'Coronel Fabriciano',
-  complement: 'AP 102'
+  zip: '',
+  street: '',
+  number: '',
+  zone: '',
+  city: '',
+  complement: ''
 })
 
 async function loading() {

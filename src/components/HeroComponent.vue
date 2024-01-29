@@ -37,7 +37,7 @@ defineProps({
 <style lang="scss">
 .background-hero-img {
   //background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1124&amp;q=100');
-  background-image: url('https://source.unsplash.com/jeOuI1uB9L4');
+  background-image: url('https://source.unsplash.com/uaPaEM7MiQQ');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

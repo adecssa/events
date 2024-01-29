@@ -1,5 +1,5 @@
 <template>
-  <h2 class="fw-bolder">Módulos do curso</h2>
+  <h2 class="fw-bolder">Accusamus odit</h2>
 
   <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
