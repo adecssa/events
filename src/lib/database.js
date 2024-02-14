@@ -31,7 +31,6 @@ export const createRegistration = async (data) => {
   if (!user?.isLoggedIn) return
 
   const result = await user.functions.create_registrations(data)
-  console.log('createRegistration ~ result:', result)
   await user.logOut()
 
   return result
